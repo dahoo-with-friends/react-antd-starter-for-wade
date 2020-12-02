@@ -1,0 +1,32 @@
+.detail-layout {
+  &-header {
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    overflow: hidden;
+
+    &-wrapper {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+
+      > .ant-btn.ant-btn-link {
+        font-size: 16px;
+        height: 64px;
+        padding-left: 0;
+      }
+
+      .title {
+        padding-left: 10px;
+        font-size: 20px;
+        line-height: 64px;
+        flex: 1;
+      }
+    }
+  }
+
+  &-content {
+    padding: 24px 50px 0 50px;
+    min-height: calc(100vh - 132px);
+  }
+}

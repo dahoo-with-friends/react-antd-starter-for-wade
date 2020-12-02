@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  .is-loading {
+    overflow: hidden !important;
+  }
+
+  > .loading {
+    .anticon.anticon-loading.ant-spin-dot, .ant-spin-text {
+      position: absolute;
+      top: 50%;
+      margin-top: -18px;
+      left: 50%;
+      margin-left: -18px;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+/* 覆盖全局样式 - START */
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td,
+.ant-table tfoot > tr > th,
+.ant-table tfoot > tr > td {
+    padding: 8px;
+}
+
+table tr th.ant-table-selection-column, table tr td.ant-table-selection-column {
+  min-width: 40px;
+  width: 40px;
+}
+
+.ant-tabs-nav .ant-tabs-tab-active {
+  color: #1890ff;
+  font-weight: 400;
+  outline: none;
+}
+
+/* 覆盖全局样式 - END */
+
+.list-extra-wrapper {
+  .list-extra {
+    > div {
+      > span {
+        float: left;
+        margin-top: 5px;
+      }
+    }
+
+    > span.ant-input-search.input-search {
+      display: inline-block;
+      min-width: 250px !important;
+    }
+  }
+}
+
+.ant-select-single .ant-select-selector {
+  display: inline-block;
+}
