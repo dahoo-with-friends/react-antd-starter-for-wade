@@ -1,3 +1,4 @@
+import 'antd-mobile/dist/antd-mobile.less'
 import 'antd/dist/antd.less'
 import '@wangdahoo/antd-easy-form/src/index.less'
 import '@wangdahoo/antd-easy-listview/src/index.less'
