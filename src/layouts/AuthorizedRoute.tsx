@@ -24,5 +24,5 @@ export function redirectTo(
     authorized = () => !!getUid()
   }
 
-  return authorized && authorized() ? <Redirect to={'/dashboard/home'} /> : <Redirect to={'/login'} />
+  return authorized && authorized() ? <Redirect to={'/dashboard/bilu/ios'} /> : <Redirect to={'/login'} />
 }

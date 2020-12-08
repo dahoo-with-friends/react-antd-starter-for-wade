@@ -11,7 +11,10 @@ import Home from './routes/Home'
 import About from './routes/About'
 
 import { Dashboard } from './layouts/Dashboard'
-import { HomeOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons'
+import { MobileDashboard } from './layouts/MobileDashBoard'
+import { AndroidOutlined, AppleOutlined } from '@ant-design/icons'
+import { BiluAndroid } from './routes/Bilu/BiluAndroid'
+import { BiluIOS } from './routes/Bilu/BiluIOS'
 
 function App() {
   return (
@@ -22,42 +25,56 @@ function App() {
           
           {/* Pages in Dashboard */}
           <Route path='/dashboard' component={() => (
-            <Dashboard
+            <MobileDashboard 
               nav={[
                 {
-                  label: '首页',
-                  icon: <HomeOutlined />,
-                  path: '/home',
-                  component: Home
+                  label: 'Bilu Android',
+                  icon: <AndroidOutlined />,
+                  path: '/bilu/android',
+                  component: BiluAndroid,
+                  title: 'Bilu Android'
                 },
                 {
-                  label: '视频',
-                  icon: <VideoCameraOutlined />,
-                  path: '/video'
-                },
-                {
-                  label: '上传',
-                  icon: <UploadOutlined />,
-                  path: '/upload'
+                  label: 'Bilu iOS',
+                  icon: <AppleOutlined />,
+                  path: '/bilu/ios',
+                  component: BiluIOS,
+                  title: 'Bilu iOS'
                 }
               ]}
-              userInfo={() => <><Avatar src={ManAvatar} /><span style={{ marginLeft: 10 }}>王大虎</span></>}
-              actions={[
-                {
-                  name: 'action-1',
-                  label: 'Action 1'
-                },
-                {
-                  name: 'action-2',
-                  label: 'Action 2'
-                }
-              ]} 
             />
+            // <Dashboard
+            //   nav={[
+            //     {
+            //       label: '首页',
+            //       icon: <HomeOutlined />,
+            //       path: '/home',
+            //       component: Home
+            //     },
+            //     {
+            //       label: '视频',
+            //       icon: <VideoCameraOutlined />,
+            //       path: '/video'
+            //     },
+            //     {
+            //       label: '上传',
+            //       icon: <UploadOutlined />,
+            //       path: '/upload'
+            //     }
+            //   ]}
+            //   userInfo={() => <><Avatar src={ManAvatar} /><span style={{ marginLeft: 10 }}>王大虎</span></>}
+            //   actions={[
+            //     {
+            //       name: 'action-1',
+            //       label: 'Action 1'
+            //     },
+            //     {
+            //       name: 'action-2',
+            //       label: 'Action 2'
+            //     }
+            //   ]} 
+            // />
           )} />
-
-          {/* 关于 */}
-          <AuthorizedRoute path="/about" component={About} />
-
           {redirectTo()}
         </Switch>
       </Router>

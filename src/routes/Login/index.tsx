@@ -5,21 +5,24 @@ import { UserOutlined, KeyOutlined } from '@ant-design/icons'
 import { Form, FormItem, FormItemType, FormValues } from '@wangdahoo/antd-easy-form'
 import trademark from '../../assets/trademark.png'
 import bg from '../../assets/bg_login_page.svg'
-// import request from '../../helpers/request'
+import request from '../../helpers/request'
 import { login } from '../../helpers/storage'
 
 function Login () {
   async function onSubmit (form: FormValues) {
     console.log('LoginForm =>', form)
 
-    // const { token, uid, authority } = await request('/api/login', {
-    //   method: 'POST',
-    //   body: form
-    // })
-    // console.log(authority)
-    // login(uid, token)
-
-    login(1, 'this\'s not a token')
+    const { token, uid, authority } = await request('/api/login', {
+      method: 'POST',
+      body: form
+    })
+    console.log(authority)
+    if (!uid) {
+      console.log('login failed!')
+      return
+    }
+    // login(1, 'this\'s not a token')
+    login(uid, token)
     window.location.href = '/home'
   }
 
