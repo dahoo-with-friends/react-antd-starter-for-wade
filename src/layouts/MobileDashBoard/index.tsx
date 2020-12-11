@@ -9,14 +9,19 @@ import { AuthorizedRoute } from '../AuthorizedRoute'
 import {logout} from '../../helpers/storage'
 
 export type NavItem = {
+    /** NavBar 上的 title */
     title: string
+    /** 跳转路径 */
     path: string
+    /** 侧边栏中的描述 */
     label: string
+    /** 侧边栏图标 */
     icon: React.ReactElement | HTMLElement
-    component?: React.Component | React.FC
+    component?: React.Component <{}, any> | React.FC
 }
 
 export type MobileDashboardProps = {
+    /** 导航栏条目 */
     nav: NavItem[]
 }
 
