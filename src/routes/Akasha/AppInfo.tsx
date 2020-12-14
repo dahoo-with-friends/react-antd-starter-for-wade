@@ -2,19 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { Row, Col, List, Button, Divider, message } from 'antd'
 import './appinfo.less'
-import { mockAndroidAppInfoModel, VersionInfoModel } from './types'
+import { AppInfoModel, EmptyAppInfoModel, VersionInfoModel } from './types'
 import { DEFAULT_PAGE_SIZE } from '../../constants'
 import {toDateFormat} from './helper'
 import AppBase from './AppBase'
 import {getAppInfo, getAppVersions} from '../../api'
 
 
+type AppInfoState = {
+  appInfo: AppInfoModel
+}
 type AppVersionState = {
     versionInfos: VersionInfoModel[]
     isLoading: boolean
     pageIndex: number
 }
 
+const defaultAppInfoState: AppInfoState = {
+  appInfo: EmptyAppInfoModel
+}
 const defaultAppVersionInfoState: AppVersionState = {
   isLoading: true,
   pageIndex: 0,
@@ -25,16 +31,17 @@ export default function AppInfo() {
   const location = useLocation()
   const {bundleID, os} = useParams<{bundleID: string, os: string}>()
 
-  const [appInfo, setAppInfoState] = useState(mockAndroidAppInfoModel)
+  const [appInfoState, setAppInfoState] = useState(defaultAppInfoState)
   const [appVersionState, setAppVersionState] = useState(defaultAppVersionInfoState)
 
   function updateAppInfo(bundleID: string, os: string) {
     getAppInfo(bundleID, os).then((res)=>{
       if (ENV === 'development') console.log(`appInfo ${res}`)
-      console.log(res)
-      setAppInfoState(res)
+      setAppInfoState({
+        appInfo: res
+      })
     }, ()=>{
-      setAppInfoState(mockAndroidAppInfoModel)
+      setAppInfoState(defaultAppInfoState)
     })
   }
 
@@ -88,7 +95,7 @@ export default function AppInfo() {
   
   return (
     <div>
-      {AppBase(appInfo)}
+      <AppBase appInfo={appInfoState.appInfo} />
       <Divider orientation="center">Versions</Divider>
       <Row justify="center" >
         <Col span={10} className="app-versions">
@@ -101,7 +108,7 @@ export default function AppInfo() {
             dataSource={appVersionState.versionInfos}
             renderItem={(item: VersionInfoModel) => (
               <List.Item>
-                <Link to={`${location.pathname}/${item.sha1}`} key={item.sha1} style={{width: '100%'}}>
+                <Link to={`${location.pathname}/${item.id}`} key={item.sha1} style={{width: '100%'}}>
                   <span style={{float: 'left'}}>{item.version}({item.build})</span> 
                   <span style={{float: 'right'}}>{toDateFormat(item.updated_at)}</span>
                 </Link>

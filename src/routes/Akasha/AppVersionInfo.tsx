@@ -1,28 +1,33 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getAppInfo } from '../../api'
-import { mockAndroidAppInfoModel } from './types'
+import { getAppVersion } from '../../api'
+import { AppInfoModel, EmptyAppInfoModel } from './types'
 import AppBase from './AppBase'
 
 
-export default function AppVersionInfo() {
-  const {bundleID, os} = useParams<{bundleID: string, os: string, versionID: string}>()
+type AppVersionInfoState = {
+  appInfo: AppInfoModel
+}
 
-  const [appInfo, setAppInfoState] = useState(mockAndroidAppInfoModel)
+const defaultAppInfoState: AppVersionInfoState = {
+  appInfo: EmptyAppInfoModel
+}
+
+export default function AppVersionInfo() {
+  const {versionID} = useParams<{bundleID: string, os: string, versionID: string}>()
+  const [appInfoState, setAppInfoState] = useState(defaultAppInfoState)
 
   useEffect(()=>{
-    getAppInfo(bundleID, os).then((res)=>{
-      if (ENV === 'development') console.log(`appInfo ${res}`)
-      console.log(res)
-      setAppInfoState(res)
-    }, ()=>{
-      setAppInfoState(mockAndroidAppInfoModel)
+    getAppVersion(versionID).then((res)=>{
+      setAppInfoState({
+        appInfo: res
+      })
     })
-  })
+  }, [])
 
   return (
     <div>
-      {AppBase(appInfo)}
+      <AppBase appInfo={appInfoState.appInfo} />
     </div>
   )
 }

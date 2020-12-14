@@ -14,7 +14,7 @@ export default function AppRouter() {
       <Route exact path="/dashboard/app/:bundleID/:os">
         <AppInfo />
       </Route>
-      <Route path="/dashboard/app/:bundleID/:os/:sha1">
+      <Route path="/dashboard/app/:bundleID/:os/:versionID">
         <AppVersionInfo />
       </Route>
     </Switch>

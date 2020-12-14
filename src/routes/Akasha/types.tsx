@@ -1,6 +1,3 @@
-import BiluIcon from '../../assets/bilu_230x230.png'
-
-
 export enum OS {
     Android = 1,
     iOS = 2
@@ -16,7 +13,7 @@ export type VersionInfoModel = {
     sha1: string,
     updated_at: string
 }
-export const mockVersionInfoModel: VersionInfoModel = {
+export const EmptyVersionInfoModel: VersionInfoModel = {
   id: 1,
   file_size: 1024000,
   version: '1.2.5',
@@ -31,21 +28,14 @@ export const mockVersionInfoModel: VersionInfoModel = {
 export type AppInfoModel = {
     name: string,
     bundle_id: string,
-    iconUrl: string,
+    icon_url: string,
     os: OS,
-    last_version: VersionInfoModel
+    current_version?: VersionInfoModel,
 }
-export const mockAndroidAppInfoModel: AppInfoModel = {
-  name: 'Bilu Android',
-  bundle_id: 'com.my.hashtag',
-  iconUrl: BiluIcon,
+export const EmptyAppInfoModel: AppInfoModel = {
+  name: '...',
+  bundle_id: '...',
+  icon_url: 'https://qlab-space.oss-cn-hangzhou.aliyuncs.com/develop/assets/bilu_230x230.png',
   os: OS.Android,
-  last_version: mockVersionInfoModel
-}
-export const mockIOSAppInfoModel: AppInfoModel = {
-  name: 'Bilu iOS',
-  bundle_id: 'com.biluapp.cn',
-  iconUrl: BiluIcon,
-  os: OS.iOS,
-  last_version: mockVersionInfoModel
+  current_version: EmptyVersionInfoModel
 }

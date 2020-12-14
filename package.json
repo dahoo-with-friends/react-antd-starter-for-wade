@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --env development --hide-modules --display-entrypoints=false",
     "dev": "webpack --env development --hide-modules --display-entrypoints=false --watch",
-    "build": "NODE_ENV=production webpack --env prodution --mode production --display-entrypoints=false",
+    "build": "webpack --env development",
     "lint": "eslint --fix src"
   },
   "dependencies": {

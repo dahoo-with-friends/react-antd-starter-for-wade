@@ -1,36 +1,46 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Row, Col } from 'antd'
 import './applist.less'
-import { mockAndroidAppInfoModel, mockIOSAppInfoModel } from './types'
+import { AppInfoModel, EmptyAppInfoModel } from './types'
 import { useHistory } from 'react-router-dom'
 import { appInfoPath } from './helper'
+import { getAppList } from '../../api'
 
 const { Meta } = Card
 
-const defaultAppList = [
-  mockAndroidAppInfoModel,
-  mockIOSAppInfoModel
-]
+type AppListState = {
+  list: AppInfoModel[]
+}
+
+const defaultAppList: AppListState = {
+  list: [
+    EmptyAppInfoModel
+  ]
+}
 
 export default function AppList() {
-  const [appList, setAppListState] = useState(defaultAppList)
+  const [appListState, setAppListState] = useState(defaultAppList)
   const history = useHistory()
 
   useEffect(()=>{
     // 请求应用列表
-    setAppListState(defaultAppList)
-  })
+    getAppList().then((res: AppInfoModel[])=>{
+      setAppListState({
+        list: res
+      })
+    })
+  }, [])
 
   return (
     <Row gutter={48}>
-      {appList.map((app)=>(
+      {appListState.list.map((app)=>(
         <Col key={app.bundle_id} onClick={()=>history.push(appInfoPath(app.bundle_id, `${app.os}`))}>
           <Card
             hoverable
             style={{ width: 240 }}
-            cover={<img src={app.iconUrl} />}
+            cover={<img src={app.icon_url} />}
           >
-            <Meta title={app.name} description={`版本：${app.last_version.version} (build ${app.last_version.build})`} />
+            <Meta title={app.name} description={`版本：${app.bundle_id}`} />
           </Card>
         </Col>
       ))}
