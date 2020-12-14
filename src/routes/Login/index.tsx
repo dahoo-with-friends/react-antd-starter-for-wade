@@ -31,7 +31,7 @@ function Login () {
       itemType: FormItemType.INPUT,
       labelText: '用户名',
       placeholder: '请输入用户名',
-      defaultValue: '',
+      defaultValue: 'user',
       required: true,
       re: /^[A-Za-z\d]{4,20}$/,
       prefix: <UserOutlined />
@@ -41,7 +41,7 @@ function Login () {
       itemType: FormItemType.PASSWORD,
       labelText: '密码',
       placeholder: '请输入密码',
-      defaultValue: '',
+      defaultValue: 'password',
       required: true,
       re: /^[A-Za-z\d_,.?/!@#$%^&*()-=+~|\\]{4,20}$/,
       prefix: <KeyOutlined />

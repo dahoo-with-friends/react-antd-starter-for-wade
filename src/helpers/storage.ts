@@ -16,6 +16,8 @@ export const login = (uid: number, token: string) => {
 export const logout = () => {
   Storage.remove(KEY_UID)
   Storage.remove(KEY_TOKEN)
+  // 这里会强制刷新页面
+  window.location.href = '/login'
 
   if (ENV === 'development') cookie.remove(KEY_TOKEN)
 }

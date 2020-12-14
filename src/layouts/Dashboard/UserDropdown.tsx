@@ -1,6 +1,7 @@
 import React from 'react'
 import { Dropdown, Menu } from 'antd'
 import { DownOutlined, InfoCircleFilled } from '@ant-design/icons'
+import { logout } from '../../helpers/storage'
 
 export interface UserDropdownAction {
   name: string
@@ -14,8 +15,11 @@ export interface UserDropdownProps {
   actions: UserDropdownAction[]
 }
 
-const makeMenuFromActions = (actions: UserDropdownAction[], onLogout?: () => void) => {
-  onLogout = onLogout || (() => console.log('logout'))
+const makeMenuFromActions = (actions: UserDropdownAction[]) => {
+  function onLogout() {
+    console.log('logout')
+    logout()
+  }
 
   return (
     <Menu>

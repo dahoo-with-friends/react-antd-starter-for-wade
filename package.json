@@ -61,8 +61,8 @@
     "webpack-merge": "^4.2.2"
   },
   "app": {
-    "name": "你的站点名称",
-    "team": "你的团队",
+    "name": "Akasha",
+    "team": "QLab",
     "jwt_header": "X-JWT-TOKEN"
   },
   "browserslist": [
