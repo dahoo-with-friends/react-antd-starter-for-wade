@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, message, Card } from 'antd'
+import { Button, message } from 'antd'
 
 export default function Home() {
   function onClick() {

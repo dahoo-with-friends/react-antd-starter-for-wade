@@ -8,15 +8,15 @@ export default function AppBase(appInfo: AppInfoModel) {
   return (
     <Row justify="center">
       <Col span={4} className="app-info">
-        <div>{appInfo.appName}</div>
-        <img src={appInfo.currentVersionInfo.qrcodeURL} alt=""/>
-        <Link to={appInfoPath(appInfo.appBundleID, `${appInfo.os}`)}>bundle ID：{appInfo.appBundleID}</Link>
+        <div>{appInfo.name}</div>
+        <img src={appInfo.last_version.qrcode_image_url} alt=""/>
+        <Link to={appInfoPath(appInfo.bundle_id, `${appInfo.os}`)}>bundle ID：{appInfo.bundle_id}</Link>
         <div>
-            版本：{appInfo.currentVersionInfo.version} 
-            (build {appInfo.currentVersionInfo.build}) 
+            版本：{appInfo.last_version.version} 
+            (build {appInfo.last_version.build}) 
         </div>
         <div>
-          更新时间：{toDateFormat(appInfo.currentVersionInfo.updated_at)}
+          更新时间：{toDateFormat(appInfo.last_version.updated_at)}
         </div>
       </Col>
     </Row>

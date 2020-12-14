@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { Row, Col, Card, List, Skeleton, Avatar, Button, Divider, message } from 'antd'
+import { Row, Col, List, Button, Divider, message } from 'antd'
 import './appinfo.less'
-import request from '../../helpers/request'
-import { mockAndroidAppInfoModel, mockVersionInfoModel, OS, VersionInfoModel } from './types'
+import { mockAndroidAppInfoModel, VersionInfoModel } from './types'
 import { DEFAULT_PAGE_SIZE } from '../../constants'
 import {toDateFormat} from './helper'
 import AppBase from './AppBase'
@@ -34,7 +33,7 @@ export default function AppInfo() {
       if (ENV === 'development') console.log(`appInfo ${res}`)
       console.log(res)
       setAppInfoState(res)
-    }, (err)=>{
+    }, ()=>{
       setAppInfoState(mockAndroidAppInfoModel)
     })
   }
@@ -55,6 +54,11 @@ export default function AppInfo() {
         versionInfos:appVersionState.versionInfos.concat(res), 
         isLoading: false,
         pageIndex: pageIndex
+      })
+    }, ()=>{
+      setAppVersionState({
+        ...appVersionState,
+        isLoading: false
       })
     })
   }
@@ -86,10 +90,10 @@ export default function AppInfo() {
     <div>
       {AppBase(appInfo)}
       <Divider orientation="center">Versions</Divider>
-      <Row justify="center" style={{paddingBottom:'20px'}}>
-        <Col span={10} className="app-info">
+      <Row justify="center" >
+        <Col span={10} className="app-versions">
           <List
-            className="app-versions"
+            
             loading={appVersionState.isLoading}
             itemLayout="horizontal"
             loadMore={loadMore}

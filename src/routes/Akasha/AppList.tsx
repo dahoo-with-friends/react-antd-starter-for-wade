@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import BiluIcon from '../../assets/bilu_230x230.png'
 import { Card, Row, Col } from 'antd'
 import './applist.less'
 import { mockAndroidAppInfoModel, mockIOSAppInfoModel } from './types'
@@ -19,19 +18,19 @@ export default function AppList() {
 
   useEffect(()=>{
     // 请求应用列表
-    // setAppListState(defaultAppList)
+    setAppListState(defaultAppList)
   })
 
   return (
     <Row gutter={48}>
       {appList.map((app)=>(
-        <Col key={app.appBundleID} onClick={()=>history.push(appInfoPath(app.appBundleID, `${app.os}`))}>
+        <Col key={app.bundle_id} onClick={()=>history.push(appInfoPath(app.bundle_id, `${app.os}`))}>
           <Card
             hoverable
             style={{ width: 240 }}
             cover={<img src={app.iconUrl} />}
           >
-            <Meta title={app.appName} description={`版本：${app.currentVersionInfo.version} (build ${app.currentVersionInfo.build})`} />
+            <Meta title={app.name} description={`版本：${app.last_version.version} (build ${app.last_version.build})`} />
           </Card>
         </Col>
       ))}

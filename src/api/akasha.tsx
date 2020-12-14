@@ -2,8 +2,8 @@ import request from '../helpers/request'
 
 // const API_PREFIX = '/api'
 
-export const getAppInfo = (bundleID: string, os: string) => {
-  const url = `/api/app/info?bundleID=${bundleID}&os=${os}`
+export const getAppInfo = (bundleID: string, os: string, versionID=0) => {
+  const url = `/api/app/info?bundleID=${bundleID}&os=${os}&versionID=${versionID}`
   return request(url, {
     method: 'GET'
   })

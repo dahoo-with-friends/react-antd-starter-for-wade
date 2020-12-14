@@ -7,12 +7,11 @@ import ManAvatar from './assets/man.png'
 // import WomanAvatar from './assets/woman.png'
 
 import Login from './routes/Login'
-import Home from './routes/Home'
 import AppRouter from './routes/Akasha/AppRouter'
 import About from './routes/About'
 
 import { Dashboard } from './layouts/Dashboard'
-import { HomeOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons'
+import { HomeOutlined } from '@ant-design/icons'
 
 function App() {
   return (
@@ -39,7 +38,7 @@ function App() {
 
           {/* 关于 */}
           <AuthorizedRoute path="/about" component={About} />
-
+          
           {redirectTo()}
         </Switch>
       </Router>
