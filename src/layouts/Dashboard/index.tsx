@@ -7,6 +7,7 @@ import UserDropdown, { UserDropdownProps } from './UserDropdown'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
 import { uniqBy } from 'lodash'
 import { AuthorizedRoute } from '../AuthorizedRoute'
+import LogoImg from '../../assets/logo.png'
 
 const { Sider, Header, Content } = Layout
 
@@ -54,7 +55,9 @@ export function Dashboard(props: DashboardProps) {
     <ScrollToTop>
       <Layout>
         <Sider className="dashboard-sider" trigger={null} collapsible collapsed={collapsed}>
-          <div className="logo" />
+          <div className={collapsed ? 'logo-collapsed' : 'logo'}>
+            <img src={LogoImg}/>
+          </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={getDefaultActiveNavItemKeys()}>
             {nav.map(({ path, icon, label }) => (
               <Menu.Item key={path} icon={icon} onClick={() => history.push(path)}>
@@ -75,9 +78,9 @@ export function Dashboard(props: DashboardProps) {
           <Content
             className="dashboard-layout-background"
             style={{
-              margin: '24px 16px',
+              margin: '8px 0px',
               padding: 24,
-              height: 'calc(100% - 48px -64px)',
+              // height: 'calc(100% - 48px -64px)',
             }}
           >
             <Switch>

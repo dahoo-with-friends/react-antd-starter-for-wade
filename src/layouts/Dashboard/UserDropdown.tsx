@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dropdown, Menu } from 'antd'
-import { DownOutlined, InfoCircleFilled } from '@ant-design/icons'
+import { DownOutlined } from '@ant-design/icons'
 import { logout } from '../../helpers/storage'
 
 export interface UserDropdownAction {
@@ -42,9 +42,9 @@ export default function UserDropdown (props: UserDropdownProps) {
 
   return (
     <div style={{ float: 'right', marginRight: 24 }}>
-      <a className="ant-link" href="/about" style={{ marginRight: 24 }}>
+      {/* <a className="ant-link" href="/about" style={{ marginRight: 24 }}>
         <InfoCircleFilled /> 关于我们
-      </a>
+      </a> */}
 
       <Dropdown overlay={menu}>
         <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>

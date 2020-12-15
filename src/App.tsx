@@ -1,14 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.less'
-import { AuthorizedRoute, redirectTo } from './layouts/AuthorizedRoute'
+import { redirectTo } from './layouts/AuthorizedRoute'
 import { Avatar } from 'antd'
 import ManAvatar from './assets/man.png'
 // import WomanAvatar from './assets/woman.png'
 
 import Login from './routes/Login'
 import AppRouter from './routes/Akasha/AppRouter'
-import About from './routes/About'
 
 import { Dashboard } from './layouts/Dashboard'
 import { HomeOutlined } from '@ant-design/icons'
@@ -37,7 +36,7 @@ function App() {
           )} />
 
           {/* 关于 */}
-          <AuthorizedRoute path="/about" component={About} />
+          {/* <AuthorizedRoute path="/about" component={About} /> */}
           
           {redirectTo()}
         </Switch>

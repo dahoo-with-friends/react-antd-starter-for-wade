@@ -11,7 +11,7 @@ export type VersionInfoModel = {
     build: string,
     qrcode_image_url: string,
     sha1: string,
-    updated_at: string
+    updated_at: number
 }
 export const EmptyVersionInfoModel: VersionInfoModel = {
   id: 1,
@@ -20,7 +20,7 @@ export const EmptyVersionInfoModel: VersionInfoModel = {
   build: '15',
   qrcode_image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png',
   sha1: 'abcdefg',
-  updated_at: '2020-10-10T01:00:03'
+  updated_at: 1608015346
 }
 
 
