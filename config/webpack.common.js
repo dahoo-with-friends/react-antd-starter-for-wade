@@ -8,10 +8,7 @@ const { app } = require('../package.json')
 
 module.exports = () => merge([
   { 
-    entry: [
-      "@babel/polyfill",
-      resolve(__dirname, '../src/index.tsx')
-    ],
+    entry: resolve(__dirname, '../src/index.tsx'),
     
     output: {
       chunkFilename: '[name].[chunkhash:7].js',
